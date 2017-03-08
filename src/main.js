@@ -2,6 +2,8 @@ $= jQuery = require('jquery');
 var React = require('react');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
+var Authors = require('./components/authors/authorPage');
+var Header = require('./components/common/header');
 
 var App = React.createClass({
 	render:function(){
@@ -9,10 +11,12 @@ var App = React.createClass({
 
 		switch(this.props.route){
 			case 'about': Child = About; break;
+			case 'authors': Child = Authors; break;
 			default: Child =Home;
 		}
-		return(
+		  return(
 			<div>
+			    <Header/>
 				<Child/>
 			</div>
 		)
@@ -23,7 +27,7 @@ function render(){
 	 React.render(<App route={route} />, document.getElementById('app'));
  }
 
-window.addEventListener('hashchange', render)
+window.addEventListener('hashchange', render);
 
 render();
 
